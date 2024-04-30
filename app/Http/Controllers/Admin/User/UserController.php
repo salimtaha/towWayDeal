@@ -1,0 +1,101 @@
+<?php
+
+namespace App\Http\Controllers\Admin\User;
+
+use App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Yajra\DataTables\Facades\DataTables;
+use App\Http\Controllers\Utils\ImageUpload;
+use App\Http\Requests\User\StoreUserRequest;
+
+class UserController extends Controller
+{
+
+    public function index()
+    {
+        return view('admin.pages.users.index');
+    } //End of index
+
+    public function getall()
+    {
+
+        $users = User::with(['governorate', 'city'])->where('status', 'active')->select('*');
+
+        return DataTables::of($users)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+                return '<div class="btn-group">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                   العمليات
+                </button>
+                <div class="dropdown-menu ">
+                <a id="deleteBtn" data-id="' . $row->id . '"class="dropdown-item"   data-bs-toggle="modal"
+                data-original-title="test" data-bs-target="#deletemodal">  الحذف  <i class="fa fa-trash"></i></a>
+                  <a class="dropdown-item "  href="' . Route('admin.users.show', $row->id) . '">العرض   <i class="fa fa-eye"></i></a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item btn-primary "  href="' . Route('admin.users.blocked.block', $row->id) . '">تقيد الحساب   <i class="fa fa-stop"></i></a>
+                </div>
+              </div>';
+            })
+            ->addColumn('image', function ($row) {
+                return '<img src="' . asset('default.jpg') . '" width="50px">';
+            })
+            ->addColumn('governorate', function ($row) {
+                return $row->governorate->name;
+            })
+            ->addColumn('city', function ($row) {
+                return $row->city->name;
+            })
+
+            ->rawColumns(['image', 'action', 'governorate', 'city'])
+            ->Make(true);
+    } // End of getall
+    public function create()
+    {
+        return view('admin.pages.users.create');
+    } // End of create
+
+    public function store(StoreUserRequest $request)
+    {
+        $request->validated();
+        $request['password'] = bcrypt($request->password);
+        $user = User::create($request->except(['image', 'password_confirmation']));
+        if ($request->hasFile('image')) {
+            $user->update([
+                'image' => ImageUpload::uploadImage($request->image, 'users'),
+            ]);
+        }
+        return redirect()->route('admin.users.index');
+    } //End of store
+
+
+    public function show($id)
+    {
+        $user = User::with('orders')->findOrFail($id);
+        return view('admin.pages.users.show' , compact('user'));
+    }
+
+
+    public function edit($id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            return view('admin.pages.users.edit', compact('user'));
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    } //End of Edit
+
+    public function delete(Request $request)
+    {
+        try {
+            $user = User::findOrFail($request->id);
+            $user->delete();
+            session()->flash('success', 'تم حذف المستخدم بنجاح');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    } //End of delete
+}
