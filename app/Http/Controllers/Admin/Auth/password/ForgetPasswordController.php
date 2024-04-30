@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers\Admin\Auth\password;
 
-use App\Http\Controllers\Controller;
 use App\Models\Admin;
-use App\Models\User;
-use App\Notifications\Admin\ResetPasswordNotification;
+use Ichtrojan\Otp\Otp;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Notifications\Admin\ResetPasswordNotification;
 
 class ForgetPasswordController extends Controller
 {
+    private $otp;
+
+    public function __construct()
+    {
+        $this->otp = new Otp;
+    }
+
     public function showEmailForm()
     {
         return view('admin.auth.passwords.email');
@@ -33,5 +40,20 @@ class ForgetPasswordController extends Controller
     public function otpForm($email)
     {
         return view('admin.auth.passwords.confirm' , ['email'=>$email]);
+    }
+
+
+    public function checkOtp(Request $request)
+    {
+        $otp2 = $this->otp->validate($request->email , $request->code);
+
+        if(! $otp2->status){
+            session()->flash('failed' , 'فشلت عمليه التحقق ,من فضلك ادخل الرمز الصحيح');
+            return redirect()->back();
+        }
+
+        session(['email'=>$request->email]);
+        return redirect()->route('admin.password.resetform');
+
     }
 }

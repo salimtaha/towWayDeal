@@ -10,10 +10,20 @@
       <div class="form-group">
         <label for="code"> أدخل كلمه السر الجديده  :</label>
         <input type="password" id="password" name="password" required>
+        @error('password')
+            <div class="text-danger errorAlert" id="errorAlert">
+                {{ $message }}
+            </div>
+        @enderror
       </div>
       <div class="form-group">
       <label for="code"> تاكيد كلمه السر الجديده  :</label>
       <input type="password" id="password" name="password_confirmation" required>
+      @error('password_confirmation')
+      <div class="text-danger" id="errorAlert">
+          {{ $message }}
+      </div>
+  @enderror
     </div>
 
       <input type="hidden" name="email" value="{{ $email }}">

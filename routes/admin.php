@@ -1,13 +1,11 @@
 <?php
 
-use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\WelcomeController;
 use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\password\ForgetPasswordController;
 use App\Http\Controllers\Admin\Auth\password\ResetPasswordController;
-use App\Http\Controllers\Admin\Order\OrderController;
 use App\Http\Controllers\Admin\Store\StoreController;
 use App\Http\Controllers\Admin\User\BlockUserController;
 use App\Http\Controllers\Admin\Charity\CharityController;
@@ -39,19 +37,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('/login/check', 'check')->name('check');
         Route::post('/logout', 'logout')->name('logout');
     });
-    // Forget Password Routes
 
+    // Forget Password Routes
     Route::controller(ForgetPasswordController::class)->name('password.')->prefix('password')->group(function () {
         Route::get('/forgot', 'showEmailForm')->name('forgot');
         Route::post('/verify', 'getVerficationCode')->name('send.verfication.code');
         Route::get('{email}/otp-form' , 'otpForm')->name('otp.form');
+        Route::post('/check-otp', 'checkOtp')->name('check.otp');
+
     });
     Route::controller(ResetPasswordController::class)->name('password.')->prefix('password')->group(function () {
-        Route::post('/check-otp', 'checkOtp')->name('check.otp');
-        Route::get('{email}/reset-form', 'showResetForm')->name('resetform');
+        Route::get('/reset-form', 'showResetForm')->name('resetform');
         Route::post('/reset', 'resetPassword')->name('reset');
-    });
 
+    });
 
 
     // Welcome Route
