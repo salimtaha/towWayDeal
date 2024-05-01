@@ -116,7 +116,7 @@
                     <div class="table-responsive mt-15">
                         <table style="text-align: center" class="table center-aligned-table table-hover mb-0">
                             <thead>
-                                <tr class="table-info text-danger col-12">
+                                <tr class="table-primary text-primary col-12">
                                     <th>#</th>
                                     <th>الاسم</th>
                                     <th>البريد الالكتروني</th>

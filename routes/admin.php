@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Withdrawal\WithdrawalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\WelcomeController;
 use App\Http\Controllers\Admin\User\UserController;
@@ -184,6 +185,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::controller(ProfileController::class)->name('profile.')->prefix('profile')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/update', 'update')->name('update');
+    });
+
+    // Withdrawal Routes
+    Route::controller(WithdrawalController::class)->name('withdrawal.')->prefix('withdrawal')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/setting', 'setting')->name('setting');
     });
 
 

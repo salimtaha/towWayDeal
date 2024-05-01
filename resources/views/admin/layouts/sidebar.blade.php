@@ -3,10 +3,10 @@
     <div class="main-header-left d-none d-lg-block">
         <div class="logo-wrapper">
             <h3>لوحه  المسئول</h3>
-            {{-- <a href="index.html">
+            <a href="index.html">
                 <img class="d-none d-lg-block blur-up lazyloaded"
-                    src="{{ asset('default.jpg') }}" alt="" width="100px" height="50px">
-            </a> --}}
+                    src="{{ asset('icon.png') }}" alt="" width="100px" height="50px">
+            </a>
         </div>
     </div>
     <div class="sidebar custom-scrollbar">
@@ -329,6 +329,21 @@
                 <ul class="sidebar-submenu">
                     <li>
                         <a href="{{ route('admin.settings.index') }}"><i class="fa fa-circle"></i>تعديل اعدادات الموقع
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="sidebar-header" href="javascript:void(0)"><i
+                        data-feather="dollar-sign"></i><span>اداره السحب</span><i
+                        class="fa fa-angle-right pull-right"></i></a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.withdrawal.setting') }}"><i class="fa fa-circle"></i> اعدادات السحب
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.withdrawal.index') }}"><i class="fa fa-circle"></i> طلبات السحب
                         </a>
                     </li>
                 </ul>

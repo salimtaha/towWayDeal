@@ -49,6 +49,8 @@
     {{-- select 2 tag --}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="{{ asset('assets/noty/noty.css') }}" rel="stylesheet">
+      {{-- select 2 tag --}}
+      <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     @livewireStyles
     @stack('css')
 </head>
@@ -148,6 +150,8 @@
     <script src="{{ asset('assets/admin') }}/js/admin-script.js"></script>
     {{-- dropify to apper image in input --}}
     <script src="{{ asset('assets/admin/js/dropify.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <script>
         $('.dropify').dropify();
     </script>
@@ -280,6 +284,14 @@
             .setAttribute('dir', 'rtl'); // Demo only
 
         new DataTable('#example');
+    </script>
+
+    {{-- select to tag  --}}
+    <script>
+        $(".select").select2({
+            tags: true
+        });
+
     </script>
     @livewireScripts
     @stack('js')
