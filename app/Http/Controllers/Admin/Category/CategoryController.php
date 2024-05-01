@@ -27,7 +27,7 @@ class CategoryController extends Controller
         return DataTables::of($categories)
             ->addIndexColumn()
             ->addColumn('image', function ($row) {
-                return '<img src="' . asset($row->image) . '" width="150px" height="100px">';
+                return '<img src="' . asset($row->image) . '" class="img-thumbnail  img-fluid">';
             })
             ->addColumn('action', function ($row) {
                 return $btn = '
@@ -39,8 +39,11 @@ class CategoryController extends Controller
             ->addColumn('parent', function ($row) {
                 return $row->parent_id ? $row->parent->name : 'قسم رئيسي';
             })
+            ->addColumn('created' , function($row){
+                return $row->created_at->format('Y-m-d H:m');
+            })
 
-            ->rawColumns(['image', 'parent' , 'action'])
+            ->rawColumns(['image','created', 'parent' , 'action'])
 
             ->Make(true);
     }

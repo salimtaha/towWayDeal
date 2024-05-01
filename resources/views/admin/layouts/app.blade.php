@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Multikart admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords"
-        content="">
+    <meta name="keywords" content="">
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="{{ asset('default.jpg') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('default.jpg') }}" type="image/x-icon">
@@ -23,25 +22,25 @@
 
 
     <!-- Font Awesome-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin')}}/css/vendors/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin') }}/css/vendors/font-awesome.css">
 
     <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin')}}/css/vendors/flag-icon.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin') }}/css/vendors/flag-icon.css">
 
     <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin')}}/css/vendors/icofont.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin') }}/css/vendors/icofont.css">
 
     <!-- Prism css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin')}}/css/vendors/prism.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin') }}/css/vendors/prism.css">
 
     <!-- Chartist css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin')}}/css/vendors/chartist.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin') }}/css/vendors/chartist.css">
 
     <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin')}}/css/vendors/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin') }}/css/vendors/bootstrap.css">
 
     <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin')}}/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin') }}/css/style.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/dropify.css') }}">
 
     {{-- datatables  --}}
@@ -50,7 +49,7 @@
     {{-- select 2 tag --}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="{{ asset('assets/noty/noty.css') }}" rel="stylesheet">
-
+    @livewireStyles
     @stack('css')
 </head>
 
@@ -90,63 +89,63 @@
     </div>
 
     <!-- latest jquery-->
-    <script src="{{ asset('assets/admin')}}/js/jquery-3.3.1.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/jquery-3.3.1.min.js"></script>
 
     <!-- Bootstrap js-->
-    <script src="{{ asset('assets/admin')}}/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/bootstrap.bundle.min.js"></script>
 
     <!-- feather icon js-->
-    <script src="{{ asset('assets/admin')}}/js/icons/feather-icon/feather.min.js"></script>
-    <script src="{{ asset('assets/admin')}}/js/icons/feather-icon/feather-icon.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/icons/feather-icon/feather.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/icons/feather-icon/feather-icon.js"></script>
 
     <!-- Sidebar jquery-->
-    <script src="{{ asset('assets/admin')}}/js/sidebar-menu.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/sidebar-menu.js"></script>
 
     <!--chartist js-->
-    <script src="{{ asset('assets/admin')}}/js/chart/chartist/chartist.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/chart/chartist/chartist.js"></script>
 
     <!--chartjs js-->
-    <script src="{{ asset('assets/admin')}}/js/chart/chartjs/chart.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/chart/chartjs/chart.min.js"></script>
 
     <!-- lazyload js-->
-    <script src="{{ asset('assets/admin')}}/js/lazysizes.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/lazysizes.min.js"></script>
 
     <!--copycode js-->
-    <script src="{{ asset('assets/admin')}}/js/prism/prism.min.js"></script>
-    <script src="{{ asset('assets/admin')}}/js/clipboard/clipboard.min.js"></script>
-    <script src="{{ asset('assets/admin')}}/js/custom-card/custom-card.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/prism/prism.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/clipboard/clipboard.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/custom-card/custom-card.js"></script>
 
     <!--counter js-->
-    <script src="{{ asset('assets/admin')}}/js/counter/jquery.waypoints.min.js"></script>
-    <script src="{{ asset('assets/admin')}}/js/counter/jquery.counterup.min.js"></script>
-    <script src="{{ asset('assets/admin')}}/js/counter/counter-custom.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/counter/jquery.waypoints.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/counter/jquery.counterup.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/counter/counter-custom.js"></script>
 
     <!--peity chart js-->
-    <script src="{{ asset('assets/admin')}}/js/chart/peity-chart/peity.jquery.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/chart/peity-chart/peity.jquery.js"></script>
 
     <!-- Apex Chart Js -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <!--sparkline chart js-->
-    <script src="{{ asset('assets/admin')}}/js/chart/sparkline/sparkline.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/chart/sparkline/sparkline.js"></script>
 
     <!--Customizer admin-->
-    <script src="{{ asset('assets/admin')}}/js/admin-customizer.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/admin-customizer.js"></script>
 
     <!--dashboard custom js-->
-    <script src="{{ asset('assets/admin')}}/js/dashboard/default.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/dashboard/default.js"></script>
 
     <!--right sidebar js-->
-    <script src="{{ asset('assets/admin')}}/js/chat-menu.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/chat-menu.js"></script>
 
     <!--height equal js-->
-    <script src="{{ asset('assets/admin')}}/js/height-equal.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/height-equal.js"></script>
 
     <!-- lazyload js-->
-    <script src="{{ asset('assets/admin')}}/js/lazysizes.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/lazysizes.min.js"></script>
 
     <!--script admin-->
-    <script src="{{ asset('assets/admin')}}/js/admin-script.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/admin-script.js"></script>
     {{-- dropify to apper image in input --}}
     <script src="{{ asset('assets/admin/js/dropify.js') }}"></script>
     <script>
@@ -278,10 +277,11 @@
 
     <script>
         document.querySelector('div.demo-html')
-    .setAttribute('dir', 'rtl'); // Demo only
+            .setAttribute('dir', 'rtl'); // Demo only
 
-new DataTable('#example');
+        new DataTable('#example');
     </script>
+    @livewireScripts
     @stack('js')
 </body>
 

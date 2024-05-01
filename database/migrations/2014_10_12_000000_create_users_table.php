@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('image')->default('default.png');
+            $table->string('image')->default('default.jpg');
             $table->foreignId('governorate_id')->nullable()->constrained('governorates')->nullOnDelete();
             $table->foreignId('city_id')->nullable()->constrained('cities')->nullOnDelete();
             $table->enum('status' , ['active' , 'blocked'])->default('active');

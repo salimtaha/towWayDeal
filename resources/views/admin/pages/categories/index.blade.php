@@ -8,19 +8,18 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="page-header-left">
-                            <h3>أقسام المنتجات
+                            <h3 style="color: rgb(236, 73, 73)"> الاقسام
                             </h3>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <ol class="breadcrumb pull-right">
                             <li class="breadcrumb-item">
-                                <a href="index.html">
+                                <a href="{{ route('admin.welcome') }}">
                                     <i data-feather="home"></i>
                                 </a>
                             </li>
-                            <li class="breadcrumb-item">Digital</li>
-                            <li class="breadcrumb-item active">Sub Category</li>
+                            <li class="breadcrumb-item active">الاقسام</li>
                         </ol>
                     </div>
                 </div>
@@ -62,6 +61,7 @@
                                             <th>الإسم</th>
                                             <th>الصورة</th>
                                             <th>القسم الرئيسي</th>
+                                            <th> تاريخ الانشاء</th>
                                             <th>العمليات</th>
 
                                         </tr>
@@ -195,6 +195,10 @@
                     {
                         data: 'parent',
                         name: 'parent'
+                    },
+                    {
+                        data: 'created',
+                        name: 'created'
                     },
                     {
                         data: 'action',

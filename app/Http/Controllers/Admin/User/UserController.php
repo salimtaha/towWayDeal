@@ -73,8 +73,8 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::with('orders')->findOrFail($id);
-        return view('admin.pages.users.show' , compact('user'));
-    }
+        return view('admin.pages.users.show', compact('user'));
+    } //end of show
 
 
     public function edit($id)
@@ -98,4 +98,63 @@ class UserController extends Controller
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     } //End of delete
+
+    public function trashed()
+    {
+        return view('admin.pages.users.trashed');
+    }
+    public function getAllTrashed()
+    {
+
+        $users = User::onlyTrashed()->with(['governorate', 'city'])->select('*');
+
+        return DataTables::of($users)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+                return '<div class="btn-group">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                   العمليات
+                </button>
+                <div class="dropdown-menu ">
+                <a id="deleteBtn" data-id="' . $row->id . '"class="dropdown-item"   data-bs-toggle="modal"
+                data-original-title="test" data-bs-target="#deletemodal">  الحذف نهائياً  <i class="fa fa-trash"></i></a>
+                  <a class="dropdown-item "  href="' . Route('admin.users.restore', $row->id) . '">استرجاع   <i class="fa fa-repeat" aria-hidden="true"></i></a>
+                </div>
+              </div>';
+            })
+            ->addColumn('image', function ($row) {
+                return '<img src="' . asset('default.jpg') . '" width="50px">';
+            })
+            ->addColumn('governorate', function ($row) {
+                return $row->governorate->name;
+            })
+            ->addColumn('city', function ($row) {
+                return $row->city->name;
+            })
+
+            ->rawColumns(['image', 'action', 'governorate', 'city'])
+            ->Make(true);
+    } // End of getall trashed
+    public function restore($id)
+    {
+        $user = User::onlyTrashed()->findOrFail($id);
+        $user->restore();
+
+        session()->flash('success', 'تم استعاده المستخدم بنجاح');
+        return redirect()->back();
+    } //End of restore
+
+    public function forceDelete(Request $request)
+    {
+        try {
+            $user = User::onlyTrashed()->findOrFail($request->id);
+            $user->forceDelete();
+
+            session()->flash('success', 'تم حذف المستخدم من النظام نهائياً بنجاح');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    } //End of Force delete
+
 }

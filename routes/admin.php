@@ -65,6 +65,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('/store', 'store')->name('store');
         Route::get('/{id}/show', 'show')->name('show');
         Route::delete('/delete', 'delete')->name('delete');
+
+        Route::get('/trashed' , 'trashed')->name('trashed');
+        Route::get('/get-all-trashed' , 'getAllTrashed')->name('getalltrashed');
+        Route::get('/{id}/restore', 'restore')->name('restore');
+        Route::delete('/force-delete', 'forceDelete')->name('forceDelete');
     });
     Route::controller(BlockUserController::class)->prefix('users-blocked')->name('users.blocked.')->group(function () {
         Route::get('/', 'index')->name('index');
@@ -180,4 +185,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/', 'index')->name('index');
         Route::post('/update', 'update')->name('update');
     });
+
+
+    // Orders Route
+    Route::controller(StoreController::class)->name('orders.')->prefix('orders')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{id}/show', 'show')->name('show');
+    });
+
 });

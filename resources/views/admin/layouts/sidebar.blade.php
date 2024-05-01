@@ -242,7 +242,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">
+                        <a href="{{ route('admin.users.trashed') }}">
                             <i class="fa fa-circle"></i>
                             <span>الارشيف</span>
                             <i class="fa fa-angle-right pull-right"></i>

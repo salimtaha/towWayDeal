@@ -21,14 +21,7 @@
         <div class="nav-right col">
             <ul class="nav-menus">
                 <li>
-                    <form class="form-inline search-form">
-                        <div class="form-group">
-                            <input class="form-control-plaintext" type="search" placeholder="Search..">
-                            <span class="d-sm-none mobile-search">
-                                <i data-feather="search"></i>
-                            </span>
-                        </div>
-                    </form>
+                   @livewire('admin.search-header')
                 </li>
                 <li>
                     <a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()">

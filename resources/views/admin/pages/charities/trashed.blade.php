@@ -53,6 +53,7 @@
             <td>{{ $charity->id }}</td>
             <td>{{ $charity->name }}</td>
             <td>{{ $charity->governorate->name }}</td>
+            <td><img width="80px" class="img-thumbnail  img-fluid" src="{{ asset($charity->health_certificate) }}"></td>
             <td>
 
                 <a href="{{ route('admin.charities.restore' , $charity->id) }}" class="btn btn-primary">استرجاع</a>

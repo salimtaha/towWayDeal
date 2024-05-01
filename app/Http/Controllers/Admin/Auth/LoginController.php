@@ -22,14 +22,13 @@ class LoginController extends Controller
     {
         return view('admin.auth.login');
     }
-
     public function check(Request $request)
     {
         //$request->validate($this->filter());
 
         if (Auth::guard('admin')->attempt($request->only(['email' , 'password']))) {
             $user = auth('admin')->user();
-            $user->notify(new LoginNotification());
+            // $user->notify(new LoginNotification());
             return redirect()->intended($this->redirectTo);
         } else {
 
