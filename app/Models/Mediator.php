@@ -12,9 +12,14 @@ class Mediator extends Model
     protected $guarded = [];
 
 
-    public function setPasswordAttribute($value)
+    // public function setPasswordAttribute($value)
+    // {
+    //     $this->attributes['password'] = bcrypt($value);
+    // }
+
+    public function withdrawals()
     {
-        $this->attributes['password'] = bcrypt($value);
+        return $this->hasMany(Withdrawal::class , 'mediator_id');
     }
 
 }

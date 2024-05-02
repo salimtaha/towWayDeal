@@ -40,4 +40,8 @@ class Store extends Model
         return $this->hasMany(StoreRate::class , 'store_id');
     }
 
+    public function withdrawals()
+    {
+        return $this->hasMany(Withdrawal::class , 'store_id');
+    }
 }

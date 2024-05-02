@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('withdrawals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('store_id')->nullable()->constrained('stores')->nullOnDelete();
+            $table->foreignId('mediator_id')->nullable()->constrained('mediators')->nullOnDelete();
+
             $table->foreignId('withdrawal_method')->constrained('withdrawal_methods')->cascadeOnDelete();
             $table->integer('number');
             $table->integer('amount');

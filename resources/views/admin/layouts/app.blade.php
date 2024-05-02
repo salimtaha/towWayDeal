@@ -281,7 +281,7 @@
 
     <script>
         document.querySelector('div.demo-html')
-            .setAttribute('dir', 'rtl'); // Demo only
+            .setAttribute('dir', 'ltr'); // Demo only
 
         new DataTable('#example');
     </script>

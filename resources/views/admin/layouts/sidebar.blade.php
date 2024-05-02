@@ -105,52 +105,12 @@
 
                 <ul class="sidebar-submenu">
                     <li>
-                        <a href="">
+                        <a href="{{ route('admin.orders.index') }}">
                             <i class="fa fa-circle"></i>
-                            <span>الاوردرات الحاليه</span>
+                            <span>الاطلاع علي الطلبات</span>
                         </a>
                     </li>
 
-                </ul>
-            </li>
-
-            <li>
-                <a class="sidebar-header" href="javascript:void(0)">
-                    <i data-feather="dollar-sign"></i>
-                    <span>المبيعات</span>
-                    <i class="fa fa-angle-right pull-right"></i>
-                </a>
-                <ul class="sidebar-submenu">
-                    <li>
-                        <a href="">
-                            <i class="fa fa-circle"></i>الطلبات المكتمله
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class="fa fa-circle"></i>العمليات
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <a class="sidebar-header" href="javascript:void(0)">
-                    <i data-feather="tag"></i>
-                    <span>Coupons</span>
-                    <i class="fa fa-angle-right pull-right"></i>
-                </a>
-                <ul class="sidebar-submenu">
-                    <li>
-                        <a href="coupon-list.html">
-                            <i class="fa fa-circle"></i>List Coupons
-                        </a>
-                    </li>
-                    <li>
-                        <a href="coupon-create.html">
-                            <i class="fa fa-circle"></i>Create Coupons
-                        </a>
-                    </li>
                 </ul>
             </li>
 
@@ -178,34 +138,6 @@
                     </li>
                 </ul>
             </li>
-
-            <li>
-                <a class="sidebar-header" href="">
-                    <i data-feather="camera"></i>
-                    <span>images</span>
-                </a>
-            </li>
-
-            <li>
-                <a class="sidebar-header" href="javascript:void(0)">
-                    <i data-feather="align-left"></i>
-                    <span>Menus</span>
-                    <i class="fa fa-angle-right pull-right"></i>
-                </a>
-                <ul class="sidebar-submenu">
-                    <li>
-                        <a href="menu-list.html">
-                            <i class="fa fa-circle"></i>Menu Lists
-                        </a>
-                    </li>
-                    <li>
-                        <a href="create-menu.html">
-                            <i class="fa fa-circle"></i>Create Menu
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
 
             <li>
                 <a class="sidebar-header" href="javascript:void(0)">

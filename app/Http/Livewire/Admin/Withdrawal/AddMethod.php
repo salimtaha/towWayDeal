@@ -25,8 +25,9 @@ class AddMethod extends Component
             'name' => $this->method,
             'description' => $this->description,
         ]);
-        session()->flash('success', 'تم اضافه وسيله الدفع بنجاح');
 
+        $this->method = "";
+        $this->description ="";
 
         $this->emit('addMethod');
 

@@ -122,9 +122,6 @@ class UserController extends Controller
                 </div>
               </div>';
             })
-            ->addColumn('image', function ($row) {
-                return '<img src="' . asset('default.jpg') . '" width="50px">';
-            })
             ->addColumn('governorate', function ($row) {
                 return $row->governorate->name;
             })

@@ -7,7 +7,7 @@
     {{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" /> --}}
 @endpush
 @section('body')
-
+ <div class="container">
     <div class="row">
         <div class="col-xxl-3 col-md-6 xl-50">
             <div class="card o-hidden widget-cards">
@@ -108,7 +108,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row parent">
         <div style="height: 400px;" class="col-xl-12 mb-30">
             <div class="tab-content">
 
@@ -131,7 +131,8 @@
                                 @forelse (\App\Models\User::latest()->take(5)->get() as $user)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td> <a href="{{ route('admin.users.show', $user->id) }}">{{ $user->name }}</a></td>
+                                        <td> <a href="{{ route('admin.users.show', $user->id) }}">{{ $user->name }}</a>
+                                        </td>
                                         <td>{{ $user->email }}</td>
                                         <td class="badge badge-pill"
                                             style="background:{{ $user->status == 'active' ? 'green' : 'red' }};margin-top: 20px;color:white">
@@ -194,7 +195,9 @@
                                 @forelse (\App\Models\Store::latest()->take(5)->get() as $store)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td> <a href="{{ route('admin.stores.show', $store->id) }}">{{ $store->name }}</a></td>
+                                        <td> <a
+                                                href="{{ route('admin.stores.show', $store->id) }}">{{ $store->name }}</a>
+                                        </td>
                                         <td>{{ $store->email }}</td>
                                         <td class="badge badge-pill"
                                             style="background:{{ $store->status == 'approved' ? 'green' : 'red' }};margin-top: 20px;color:white">
@@ -256,7 +259,9 @@
                                 @forelse (\App\Models\Charity::latest()->take(5)->get() as $charity)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td> <a href="{{ route('admin.charities.show', $charity->id) }}">{{ $charity->name }}</a></td>
+                                        <td> <a
+                                                href="{{ route('admin.charities.show', $charity->id) }}">{{ $charity->name }}</a>
+                                        </td>
                                         <td>{{ $charity->email }}</td>
                                         <td class="badge badge-pill"
                                             style="background:{{ $charity->status == 'approved' ? 'green' : 'red' }};margin-top: 20px;color:white">
@@ -341,10 +346,23 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 
+@push('css')
+    @push('css')
+        <style>
+            .parent {
+                width: 100%;
+                height: 100%;
+                box-shadow: 0 0 10px rgba(200, 184, 184, 0.1);
 
+
+            }
+        </style>
+    @endpush
+@endpush
 
 @push('js')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"

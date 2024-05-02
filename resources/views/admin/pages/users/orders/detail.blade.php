@@ -2,8 +2,37 @@
 @section('title' , 'تفاصيل الطلب')
 
 @section('body')
-
+ <!-- Container-fluid starts-->
+ <div class="container-fluid">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="page-header-left">
+                    <h3 style="color: rgb(236, 73, 73)"> المتاجر المحذوفه
+                    </h3>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <ol class="breadcrumb pull-right">
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('admin.welcome') }}">
+                            <i data-feather="home"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">المستخدمين </a>
+                    </li>
+                    <li class="breadcrumb-item active"><a href="{{ route('admin.users.show' , $order->user->id) }}">{{ $order->user->name }}
+                             </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
     <div class="container">
+
+
         <!-- Order Details Box -->
         <div class="order-details">
             <h2>تفاصيل الطلب !</h2>

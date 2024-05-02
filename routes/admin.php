@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\Setting\SettingController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Mediator\MediatorController;
 use App\Http\Controllers\Admin\Category\SubCategoryController;
+use App\Http\Controllers\Admin\Order\OrderController;
 use App\Http\Controllers\Admin\User\Order\OrderController as OrderReportController;
 
 /*
@@ -43,14 +44,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::controller(ForgetPasswordController::class)->name('password.')->prefix('password')->group(function () {
         Route::get('/forgot', 'showEmailForm')->name('forgot');
         Route::post('/verify', 'getVerficationCode')->name('send.verfication.code');
-        Route::get('{email}/otp-form' , 'otpForm')->name('otp.form');
+        Route::get('{email}/otp-form', 'otpForm')->name('otp.form');
         Route::post('/check-otp', 'checkOtp')->name('check.otp');
-
     });
     Route::controller(ResetPasswordController::class)->name('password.')->prefix('password')->group(function () {
         Route::get('/reset-form', 'showResetForm')->name('resetform');
         Route::post('/reset', 'resetPassword')->name('reset');
-
     });
 
 
@@ -67,8 +66,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/{id}/show', 'show')->name('show');
         Route::delete('/delete', 'delete')->name('delete');
 
-        Route::get('/trashed' , 'trashed')->name('trashed');
-        Route::get('/get-all-trashed' , 'getAllTrashed')->name('getalltrashed');
+        Route::get('/trashed', 'trashed')->name('trashed');
+        Route::get('/get-all-trashed', 'getAllTrashed')->name('getalltrashed');
         Route::get('/{id}/restore', 'restore')->name('restore');
         Route::delete('/force-delete', 'forceDelete')->name('forceDelete');
     });
@@ -189,15 +188,25 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     // Withdrawal Routes
     Route::controller(WithdrawalController::class)->name('withdrawal.')->prefix('withdrawal')->group(function () {
-        Route::get('/', 'index')->name('index');
+        Route::match(['post', 'get'], '/', 'index')->name('index');
         Route::get('/setting', 'setting')->name('setting');
-    });
-
-
-    // Orders Route
-    Route::controller(StoreController::class)->name('orders.')->prefix('orders')->group(function () {
-        Route::get('/', 'index')->name('index');
         Route::get('/{id}/show', 'show')->name('show');
     });
+
+
+    // // Orders Route
+    // Route::controller(StoreController::class)->name('orders.')->prefix('orders')->group(function () {
+    //     Route::get('/', 'index')->name('index');
+    //     Route::get('/{id}/show', 'show')->name('show');
+    // });
+
+    // Orders Route
+        // Stores Routes
+        Route::controller(OrderController::class)->name('orders.')->prefix('orders')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/get-all', 'getall')->name('getall');
+
+            Route::get('/{id}/show', 'show')->name('show');
+        });
 
 });

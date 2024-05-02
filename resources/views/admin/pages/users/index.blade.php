@@ -65,7 +65,6 @@
                                             <th>البريد الالكتروني</th>
                                             <th>المحافظه</th>
                                             <th>المدينه</th>
-                                            <th>الصوره</th>
                                             <th>العمليات</th>
                                         </tr>
                                     </thead>
@@ -158,11 +157,6 @@
                         data: 'city',
                         name: 'city'
                     },
-                    {
-                        data: 'image',
-                        name: 'image'
-                    },
-
 
                     {
                         data: 'action',

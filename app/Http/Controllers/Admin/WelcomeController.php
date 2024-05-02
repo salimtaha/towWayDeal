@@ -23,9 +23,8 @@ class WelcomeController extends Controller
     public function counts()
     {
 
-        // Get the first and last day of the last month
-        $startOfMonth = Carbon::now()->subMonth()->startOfMonth();
-        $endOfMonth = Carbon::now()->subMonth()->endOfMonth();
+        $startOfMonth = now()->startOfMonth()->format('Y-m-d h:m:s');
+        $endOfMonth = now()->endOfMonth()->format('Y-m-d h:m:s');
 
         return  [
             'vendors' => Store::where('status', 'approved')->whereBetween('created_at', [$startOfMonth, $endOfMonth])->count(),

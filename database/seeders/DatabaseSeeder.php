@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
             ContactSeeder::class,
             WithdrawalMethodSeeder::class,
             WithdrawalSettingSeeder::class,
+            WithdrawalsSeeder::class,
         ]);
     }
 }
