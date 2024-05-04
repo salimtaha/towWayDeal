@@ -22,7 +22,7 @@ class SubCategoryController extends Controller
         return DataTables::of($categories)
             ->addIndexColumn()
             ->addColumn('image', function ($row) {
-                return '<img src="' . asset($row->image) . '" width="150px" height="100px">';
+                return '<img src="' . asset($row->image) . '"class="img-thumbnail  img-fluid">';
             })
             ->addColumn('action', function ($row) {
                 return $btn = '
@@ -34,8 +34,16 @@ class SubCategoryController extends Controller
             ->addColumn('parent', function ($row) {
                 return $row->parent_id ? $row->parent->name : 'قسم رئيسي';
             })
+            ->addColumn('created' , function($row){
+                return $row->created_at->format('Y-m-d H:m');
+            })
+            ->filterColumn('parent', function($query, $keyword) {
+                $query->whereHas('parent', function($q) use($keyword) {
+                    $q->where('name', 'like', "%{$keyword}%");
+                });
+            })
 
-            ->rawColumns(['image', 'parent' , 'action'])
+            ->rawColumns(['image', 'parent' ,'created', 'action'])
 
             ->Make(true);
     }

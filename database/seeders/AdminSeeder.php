@@ -19,7 +19,7 @@ class AdminSeeder extends Seeder
         Admin::create([
             'name'=>'Admin',
             'user_name'=>'admin',
-            'email'=>'admin@gmail.com',
+            'email'=>'salimalkassas1122@gmail.com',
             'password'=>bcrypt('salimsalim'),
             'created_at'=>date('Y-m-d h:m:s'),
             'updated_at'=>date('Y-m-d h:m:s'),

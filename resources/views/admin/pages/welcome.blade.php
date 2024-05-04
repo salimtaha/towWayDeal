@@ -346,6 +346,11 @@
             </div>
         </div>
     </div>
+
+    <div class="row calendar">
+        @livewire('admin.calendar')
+
+    </div>
 </div>
 @endsection
 
@@ -356,9 +361,18 @@
             .parent {
                 width: 100%;
                 height: 100%;
-                box-shadow: 0 0 10px rgba(200, 184, 184, 0.1);
+                box-shadow: 0 0 10px rgba(176, 158, 158, 0.1);
 
 
+            }
+            .container{
+                background: white;
+            }
+            .calendar{
+                margin-top: 80px;
+                width: 100%;
+                height: 100%;
+                box-shadow: 0 0 10px rgba(176, 158, 158, 0.1);
             }
         </style>
     @endpush

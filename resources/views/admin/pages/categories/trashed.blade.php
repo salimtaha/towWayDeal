@@ -33,9 +33,18 @@
         </div>
     </div>
     <!-- Container-fluid Ends-->
-    <h2 class="my-4 text-center"> *الاقسام المحذوفه*</h2>
-    <div class="search-container">
-      <input type="text" id="searchInput" class="form-control" placeholder="Search">
+    <h2 class="my-4 text-center"  style="font-size: 25px;font-family:'Courier New', Courier, monospace"> *الاقسام المحذوفه*</h2>
+    <div class="row .product-details">
+        <div class="col-md-9 ">
+            <div class="search-container">
+                <input type="text" id="searchInput" class="form-control" placeholder=" ابحث هنا">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="search-container">
+                <a href="{{ route('admin.categories.index') }}" class="btn btn-info">عرض الاقسام النشطه    </a>
+            </div>
+        </div>
     </div>
     <table id="categoryTable" class="table table-bordered table-shadow">
       <thead class="thead-dark">
@@ -47,7 +56,7 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($categoriesTrashed as  $category)
+        @forelse ($categoriesTrashed as  $category)
         <tr>
             <td>{{ $category->id }}</td>
             <td>{{ $category->name }}</td>
@@ -58,7 +67,11 @@
                 <a href="{{ route('admin.categories.forcedelete', $category->id) }}" class="btn btn-danger">حذف نهائياً</a>
             </td>
           </tr>
-        @endforeach
+        @empty
+            <td colspan="4">
+                <div class="text-info"><center>لا يوجد بيانات</center>  </div>
+            </td>
+        @endforelse
 
 
         <!-- Add more rows here with fake data -->
@@ -105,4 +118,130 @@
     });
   });
 </script>
+@endpush
+
+
+@push('css')
+    <style>
+        .parent {
+            width: 100%;
+            text-align: center;
+            align-content: center;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* margin-right: 60px; */
+
+        }
+
+        /* body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        } */
+
+
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .order-details,
+        .product-details {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-details h2,
+        .product-details h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .order-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .order-details ul li {
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .product-details table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .product-details th,
+        .product-details td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .product-details th {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .product-details td {
+            color: #666;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #fff;
+        }
+
+
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+
+
+        .order-details h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .order-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .order-details ul li {
+            margin-bottom: 10px;
+            color: #666;
+            background-color: #e6e6e6;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+
+
+    </style>
 @endpush

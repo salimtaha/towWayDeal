@@ -1,95 +1,66 @@
 @extends('admin.layouts.app')
-@section('title' , 'تفاصيل الطلب')
+@section('title' , 'اضفه الحدث')
 
 @section('body')
- <!-- Container-fluid starts-->
- <div class="container-fluid">
-    <div class="page-header">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="page-header-left">
-                    <h3 style="color: rgb(236, 73, 73)"> تفاصيل طلب :{{ $order->user->name }}
-                    </h3>
+
+     <!-- Container-fluid starts-->
+     <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3 style="color: rgb(236, 73, 73)"> تقويم الاحداث
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item">
+                            <a href="{{ route('admin.welcome') }}">
+                                <i data-feather="home"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active"><a href=""> تقويم الاحداث  </a>
+                        </li>
+
+                    </ol>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <ol class="breadcrumb pull-right">
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('admin.welcome') }}">
-                            <i data-feather="home"></i>
-                        </a>
-                    </li>
-                    <li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">المستخدمين </a>
-                    </li>
-                    <li class="breadcrumb-item"><a href="{{ route('admin.orders.index') }}">الطبلبات </a>
-                    </li>
-                    <li class="breadcrumb-item active"><a href="{{ route('admin.users.show' , $order->user->id) }}">{{ $order->user->name }}
-                             </a>
-                    </li>
-                </ol>
-            </div>
         </div>
     </div>
-</div>
-<!-- Container-fluid Ends-->
+    <!-- Container-fluid Ends-->
     <div class="parent">
 
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="card ">
+                        <div class="card-header">
+                            <form class="form-inline search-form search-box">
 
-        <!-- Order Details Box -->
-        <div class="order-details">
-            <h2>تفاصيل الطلب !</h2>
-            <ul>
-                <li><strong>الاسم:</strong> {{ $order->user->name }}</li>
-                <li><strong>الحاله:</strong> {{ $order->status }}</li>
-                <li><strong>السعر الكلي:</strong>{{ $order->total_price }}</li>
-                <li><strong>رقم الجوال:</strong>{{ $order->phone }}</li>
-                <li><strong>البريد الالكتروني:</strong> {{ $order->email }}</li>
-                <li><strong>المحافظه:</strong> {{ $order->governorate->name }}</li>
-                <li><strong>المدينه:</strong> {{ $order->city->name }}</li>
+                            </form>
 
-                <li><strong>العنوان التفصيلي:</strong> {{ $order->address }}</li>
-                <li><strong>مصاريف الشحن:</strong> {{ $order->shipping_price }}</li>
-                <li><strong>الملاحظه:</strong>{{ $order->notice }}</li>
-                <li><strong>وقت انشاء :</strong> {{ $order->created_at }}</li>
-            </ul>
+                            <a href="{{ route('admin.events.index') }}" type="button" class="btn btn-primary mt-md-0 mt-2"
+                               >قائمه الاحداث  </a>
+
+
+                        </div>
+
+                        <div class="card-body product-details">
+
+                            @livewire('admin.calendar')
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Product Details Box -->
-        <div class="product-details">
-            <h2>تفاصبل المنتجات</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>اسم المنتج</th>
-                        <th>الكميه</th>
-                        <th>سعر النوع الواحد</th>
-                        <th> تاريخ الانتهاء</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($order->orderDetails as $item)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->product_name }}</td>
-                            <td>{{ $item->product_quantity }}</td>
-                            <td>{{ $item->product_price}}</td>
-                            <td>{{ $item->expire_date}}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Buttons -->
-        <div class="buttons">
-            <button class="btn btn-success ptn-sm" onclick="window.print()">طباع الطلب</button>
-            <a href="" class="btn btn-info btn-sm"><strong style="color: rgb(255, 254, 252);font-size:16px">تقرير للبائع </strong></a>
-        </div>
     </div>
+
+
+
 @endsection
-
-
 @push('css')
     <style>
         .parent {
@@ -116,7 +87,7 @@
             text-align: center;
         }
 
-        .order-details,
+
         .product-details {
             margin-bottom: 20px;
             padding: 20px;
@@ -262,5 +233,3 @@
         }
     </style>
 @endpush
-
-

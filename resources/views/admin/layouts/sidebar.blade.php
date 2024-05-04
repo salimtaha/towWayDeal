@@ -2,19 +2,19 @@
  <div class="page-sidebar">
     <div class="main-header-left d-none d-lg-block">
         <div class="logo-wrapper">
-            <h3>لوحه  المسئول</h3>
+
             <a href="index.html">
                 <img class="d-none d-lg-block blur-up lazyloaded"
-                    src="{{ asset('icon.png') }}" alt="" width="100px" height="50px">
+                    src="{{ asset('whitelogo.png') }}" alt="" width="200px" height="50px">
             </a>
         </div>
     </div>
     <div class="sidebar custom-scrollbar">
         <a href="javascript:void(0)" class="sidebar-back d-lg-none d-block"><i class="fa fa-times"
                 aria-hidden="true"></i></a>
-        <div class="sidebar-user">
+        <div class="sidebar-user" style="height: 110px">
             <div class="">
-                <div class=" align-items-center text-center"><img class="" width="70px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"></div>
+                <div class=" "><img style="margin-left: 60px" class="" width="60px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"></div>
             </div>            <div>
                 <h6 class="f-14">{{ Auth::guard('admin')->user()->name }}</h6>
                 <p>الادمن</p>
@@ -74,7 +74,6 @@
                         <a href="{{ route('admin.charities.index') }}">
                             <i class="fa fa-circle"></i>
                             <span>المؤسسات  الموثقه</span>
-                            <i class="fa fa-angle-right pull-right"></i>
                         </a>
                     </li>
 
@@ -82,14 +81,12 @@
                         <a href="{{ route('admin.charities.wating') }}">
                             <i class="fa fa-circle"></i>
                             <span>  قائمه الانتظار</span>
-                            <i class="fa fa-angle-right pull-right"></i>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.charities.trashed') }}">
                             <i class="fa fa-circle"></i>
                             <span> الارشيف </span>
-                            <i class="fa fa-angle-right pull-right"></i>
                         </a>
                     </li>
                 </ul>
@@ -151,7 +148,6 @@
                         <a href="{{ route('admin.users.index') }}">
                             <i class="fa fa-circle"></i>
                             <span>المستخدمين</span>
-                            <i class="fa fa-angle-right pull-right"></i>
                         </a>
 
                         {{-- <ul class="sidebar-submenu">
@@ -170,14 +166,12 @@
                         <a href="{{ route('admin.users.blocked.index') }}">
                             <i class="fa fa-circle"></i>
                             <span>المحظورين</span>
-                            <i class="fa fa-angle-right pull-right"></i>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.users.trashed') }}">
                             <i class="fa fa-circle"></i>
                             <span>الارشيف</span>
-                            <i class="fa fa-angle-right pull-right"></i>
                         </a>
                     </li>
                 </ul>
@@ -196,21 +190,18 @@
                         <a href="{{ route('admin.stores.index') }}">
                             <i class="fa fa-circle"></i>
                             <span>المتاجر الموثقه</span>
-                            <i class="fa fa-angle-right pull-right"></i>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.stores.wating') }}">
                             <i class="fa fa-circle"></i>
                             <span>قائمه الانتظار </span>
-                            <i class="fa fa-angle-right pull-right"></i>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.stores.trashed') }}">
                             <i class="fa fa-circle"></i>
                             <span>الارشيف</span>
-                            <i class="fa fa-angle-right pull-right"></i>
                         </a>
                     </li>
                 </ul>
@@ -228,30 +219,16 @@
                     <li>
                         <a href="{{ route('admin.contacts.index') }}">
                             <i class="fa fa-circle"></i>لم يتم الرد عليها
-                            <i class="fa fa-angle-right pull-right"></i>
 
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.contacts.old') }}">
                             <i class="fa fa-circle"></i>تم الرد عليها
-                            <i class="fa fa-angle-right pull-right"></i>
 
                         </a>
                     </li>
                 </ul>
-            </li>
-
-
-
-
-
-
-
-            <li>
-                <a class="sidebar-header" href="reports.html"><i
-                        data-feather="bar-chart"></i><span>Reports</span>
-                </a>
             </li>
 
             <li>
@@ -280,6 +257,37 @@
                     </li>
                 </ul>
             </li>
+
+            <li>
+                <a class="sidebar-header" href="javascript:void(0)">
+                    <i data-feather="calendar"></i>
+                    <span>الاحداث</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="">
+                            <i class="fa fa-circle"></i>
+                            <span> تقويم الاحداث</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('admin.events.index') }}">
+                            <i class="fa fa-circle"></i>
+                            <span>قائمه  الاحداث </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a class="sidebar-header" href="reports.html"><i
+                        data-feather="bar-chart"></i><span>Reports</span>
+                </a>
+            </li>
+
 
             <li>
                 <a class="sidebar-header" href="invoice.html"><i

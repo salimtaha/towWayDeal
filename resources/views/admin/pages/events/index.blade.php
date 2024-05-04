@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'الطلبات')
+@section('title' , 'اداره الاحداث ')
 
 @section('body')
 
@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="page-header-left">
-                        <h3 style="color: rgb(236, 73, 73)"> الطلبات
+                        <h3 style="color: rgb(236, 73, 73)"> الاحداث
                         </h3>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                                 <i data-feather="home"></i>
                             </a>
                         </li>
-                        <li class="breadcrumb-item active"><a href=""> الطلبات </a>
+                        <li class="breadcrumb-item active"><a href=""> احداث النظام </a>
                         </li>
 
                     </ol>
@@ -32,38 +32,53 @@
     <div class="parent">
 
         <div class="container-fluid">
-            <div class="page-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- Product Details Box -->
-                        <div class="product-details">
-                            <h2>الطلبات</h2>
-                            <table id="editableTable" class="editableTable">
-                                <thead>
-                                    <tr>
-                                        <th> رقم العمليه</th>
-                                        <th>اسم العميل</th>
-                                        <th>وسيله الدفع</th>
-                                        <th> المبلغ الكلي</th>
-                                        <th> حاله الطلب  </th>
-                                        <th> العمليات   </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{-- <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr> --}}
-                                </tbody>
-                            </table>
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="card ">
+                        <div class="card-header">
+                            <form class="form-inline search-form search-box">
+
+                            </form>
+
+                            <a href="{{ route('admin.events.calendar') }}" type="button" class="btn btn-primary mt-md-0 mt-2"
+                               >إضافة حدث جديد</a>
+
+
+                        </div>
+
+                        <div class="card-body">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <div class="table-responsive table-desi product-details">
+                                <table id="editableTable" class="editableTable">
+                                    <thead>
+                                        <tr>
+                                            <th> رقم الحدث</th>
+                                            <th> عنوان الحدث</th>
+                                            <th> تاريخ انشاء الحدث</th>
+                                            <th> تاريخ بدء الحدث </th>
+                                            <th>   الوقت المتبقي باليوم </th>
+                                            <th>  العمليات </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
 
@@ -76,7 +91,7 @@
         var table = $('#editableTable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ Route('admin.orders.getall') }}",
+            ajax: "{{ Route('admin.events.getall') }}",
             columns: [
 
                 {
@@ -87,26 +102,22 @@
 
                 },
                 {
-                    data: 'user_name',
-                    name: 'user_name'
+                    data: 'title',
+                    name: 'title'
                 },
 
                 {
-                    data: 'payment_method',
-                    name: 'payment_method'
+                    data: 'created',
+                    name: 'created'
                 },
                 {
-                    data: 'total_price',
-                    name: 'total_price'
+                    data: 'start',
+                    name: 'start'
                 },
                 {
-                    data: 'status',
-                    name: 'status',
-                    orderable: false,
-                    searchable: false
+                    data: 'remaining_time',
+                    name: 'remaining_time',
                 },
-
-
                 {
                     data: 'action',
                     name: 'action',

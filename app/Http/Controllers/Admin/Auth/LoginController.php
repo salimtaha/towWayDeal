@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Notifications\LoginNotification;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
+use App\Notifications\LoginNotification;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -24,7 +25,7 @@ class LoginController extends Controller
     }
     public function check(Request $request)
     {
-        //$request->validate($this->filter());
+        $request->validate($this->filter() , $this->customFilter());
 
         if (Auth::guard('admin')->attempt($request->only(['email' , 'password']))) {
             $user = auth('admin')->user();
@@ -49,6 +50,17 @@ class LoginController extends Controller
         return [
             'email' => ['required', 'email'],
             'password' => ['string', 'required','min:8'],
+            'g-recaptcha-response' => ['required']
+        ];
+    }
+
+    public function customFilter()
+    {
+        return [
+            'g-recaptcha-response' => [
+                'required' => 'يرجى التاكد من انك لست ريبورت معلش كل واحد يضمن حقه',
+                // 'captcha' => 'خطا في التحقق ,  حاول مره اخرى .',
+            ],
         ];
     }
 

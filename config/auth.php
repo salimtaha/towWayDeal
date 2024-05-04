@@ -44,6 +44,14 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'mediator' => [
+            'driver' => 'session',
+            'provider' => 'mediators',
+        ],
+        'charity' => [
+            'driver' => 'session',
+            'provider' => 'charities',
+        ],
     ],
 
     /*
@@ -71,6 +79,16 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+
+        'medaitors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Mediator::class,
+        ],
+
+        'charities' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Charity::class,
         ],
 
         // 'users' => [
@@ -101,12 +119,7 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'admins' => [
-            'provider' => 'admins',
-            'table' => 'admin_password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
+
     ],
 
     /*

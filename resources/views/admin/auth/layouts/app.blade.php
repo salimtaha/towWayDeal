@@ -15,6 +15,8 @@
     <!-- Core Css -->
     <link rel="stylesheet" href="{{ asset('assets/admin/auth/css/theme.css') }}" />
     <title>@yield('title')</title>
+    <link href="{{ asset('assets/noty/noty.css') }}" rel="stylesheet">
+
 </head>
 
 <body class="DEFAULT_THEME bg-white">
@@ -33,6 +35,34 @@
             }, {{ session('errorLifetime', 4) }} * 1000); // Default to 5 seconds
         };
     </script>
+
+     {{-- flash message --}}
+     <script src="{{ asset('assets/noty/noty.min.js') }}"></script>
+    </script>
+    @if (session('success'))
+        <script>
+            new Noty({
+                type: 'success',
+                layout: 'topCenter',
+                text: "{{ session('success') }}",
+                timeout: 4000,
+                killer: true
+            }).show();
+        </script>
+    @endif
+    @if (session('failed'))
+        <script>
+            new Noty({
+                type: 'error',
+                layout: 'topCenter',
+                text: "{{ session('failed') }}",
+                timeout: 4000,
+                killer: true
+            }).show();
+        </script>
+    @endif
+
+    @stack('js')
 </body>
 
 </html>
